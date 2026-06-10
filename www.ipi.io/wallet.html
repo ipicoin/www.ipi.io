@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from www.ipi.io/wallet.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 22 May 2026 07:13:55 GMT -->
+<head>
+<meta charset="UTF-8" />
+<title>Add IPI Network</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<style>
+:root {
+--bg: #050816;
+--bg-card: #0f172a;
+--accent: #38bdf8;
+--accent-soft: rgba(56,189,248,0.12);
+--text-main: #e5e7eb;
+--text-muted: #9ca3af;
+--danger: #f97373;
+}
+
+* {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
+
+body {
+font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+"Segoe UI", sans-serif;
+background: radial-gradient(circle at top, #1d2538 0, #050816 55%);
+color: var(--text-main);
+min-height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 20px;
+}
+
+.wrapper {
+max-width: 900px;
+width: 100%;
+}
+
+.card {
+background: linear-gradient(135deg, rgba(56,189,248,0.15), transparent);
+border-radius: 24px;
+padding: 1px;
+box-shadow:
+0 20px 40px rgba(0,0,0,0.5),
+0 0 40px rgba(56,189,248,0.2);
+}
+
+.card-inner {
+background: radial-gradient(circle at top left, #020617 0, #020617 50%, #020617 100%);
+border-radius: 22px;
+padding: 32px 24px;
+display: grid;
+grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+gap: 32px;
+}
+
+@media (max-width: 768px) {
+.card-inner {
+grid-template-columns: 1fr;
+}
+}
+
+.left-header {
+display: flex;
+align-items: center;
+gap: 16px;
+margin-bottom: 16px;
+}
+
+.logo-circle {
+width: 56px;
+height: 56px;
+border-radius: 999px;
+background: radial-gradient(circle at 30% 10%, #38bdf8, #0f172a 60%);
+display: flex;
+align-items: center;
+justify-content: center;
+overflow: hidden;
+border: 1px solid rgba(148,163,184,0.5);
+}
+
+.logo-circle img {
+width: 44px;
+height: 44px;
+object-fit: contain;
+}
+
+h1 {
+font-size: 1.8rem;
+letter-spacing: 0.03em;
+}
+
+.badge {
+display: inline-flex;
+align-items: center;
+gap: 6px;
+padding: 4px 10px;
+border-radius: 999px;
+background: var(--accent-soft);
+color: var(--accent);
+font-size: 0.75rem;
+margin-bottom: 8px;
+}
+
+.badge-dot {
+width: 6px;
+height: 6px;
+border-radius: 999px;
+background: #22c55e;
+box-shadow: 0 0 8px #22c55e;
+}
+
+.subtitle {
+color: var(--text-muted);
+font-size: 0.95rem;
+line-height: 1.5;
+margin-bottom: 20px;
+}
+
+.button-row {
+display: flex;
+flex-wrap: wrap;
+gap: 12px;
+margin-bottom: 16px;
+}
+
+button.wallet-btn {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+gap: 8px;
+padding: 10px 18px;
+border-radius: 999px;
+border: none;
+cursor: pointer;
+font-size: 0.95rem;
+font-weight: 500;
+letter-spacing: 0.02em;
+transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+white-space: nowrap;
+}
+
+button.wallet-btn.main {
+background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+color: #0b1220;
+box-shadow:
+0 8px 22px rgba(56,189,248,0.35),
+0 0 14px rgba(56,189,248,0.35);
+}
+
+button.wallet-btn.main:hover {
+transform: translateY(-1px);
+box-shadow:
+0 10px 26px rgba(56,189,248,0.45),
+0 0 20px rgba(56,189,248,0.5);
+}
+
+button.wallet-btn.secondary {
+background: rgba(15,23,42,0.9);
+color: var(--text-main);
+border: 1px solid rgba(148,163,184,0.5);
+}
+
+button.wallet-btn.secondary:hover {
+background: rgba(15,23,42,1);
+transform: translateY(-1px);
+}
+
+.hint {
+font-size: 0.8rem;
+color: var(--text-muted);
+}
+
+.hint a {
+color: var(--accent);
+text-decoration: none;
+}
+
+.hint a:hover {
+text-decoration: underline;
+}
+
+.status-box {
+margin-top: 16px;
+font-size: 0.86rem;
+min-height: 18px;
+}
+
+.status-ok {
+color: #4ade80;
+}
+
+.status-err {
+color: var(--danger);
+}
+
+.status-muted {
+color: var(--text-muted);
+}
+
+.right-card {
+background: radial-gradient(circle at top, rgba(56,189,248,0.18), rgba(15,23,42,0.95));
+border-radius: 18px;
+padding: 18px 18px 20px;
+border: 1px solid rgba(148,163,184,0.4);
+display: flex;
+flex-direction: column;
+gap: 10px;
+}
+
+.right-title {
+font-size: 0.95rem;
+font-weight: 600;
+margin-bottom: 4px;
+}
+
+.kv-row {
+display: flex;
+justify-content: space-between;
+gap: 12px;
+font-size: 0.85rem;
+color: var(--text-muted);
+}
+
+.kv-row .key {
+color: #cbd5f5;
+}
+
+.pill {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+padding: 3px 10px;
+border-radius: 999px;
+background-color: rgba(15,23,42,0.9);
+border: 1px solid rgba(148,163,184,0.6);
+font-size: 0.75rem;
+color: #e5e7eb;
+}
+
+.link {
+color: var(--accent);
+text-decoration: none;
+font-size: 0.8rem;
+}
+
+.link:hover {
+text-decoration: underline;
+}
+
+.footnote {
+margin-top: 10px;
+font-size: 0.78rem;
+color: var(--text-muted);
+line-height: 1.4;
+}
+
+.mobile-note {
+margin-top: 6px;
+font-size: 0.8rem;
+color: #facc15;
+}
+
+.manual-config {
+margin-top: 16px;
+font-size: 0.8rem;
+color: var(--text-muted);
+}
+
+.manual-config summary {
+cursor: pointer;
+font-weight: 500;
+margin-bottom: 4px;
+}
+
+.manual-config pre {
+background: #020617;
+padding: 10px;
+border-radius: 8px;
+overflow-x: auto;
+font-size: 0.75rem;
+margin-top: 6px;
+border: 1px solid rgba(148,163,184,0.4);
+}
+
+.manual-config button {
+margin-top: 6px;
+padding: 6px 12px;
+border-radius: 999px;
+border: 1px solid rgba(148,163,184,0.6);
+background: rgba(15,23,42,0.9);
+color: #e5e7eb;
+font-size: 0.75rem;
+cursor: pointer;
+}
+
+.manual-config button:hover {
+background: rgba(15,23,42,1);
+}
+</style>
+</head>
+
+<body>
+<div class="wrapper">
+<div class="card">
+<div class="card-inner">
+
+<div>
+<div class="badge">
+<span class="badge-dot"></span>
+<span>IPI Mainnet 2</span>
+</div>
+
+<div class="left-header">
+<div class="logo-circle">
+<img src="https://www.ipi.io/history/ipi_min.png" alt="IPI Logo" />
+</div>
+<div>
+<h1>Connect to IPI Network</h1>
+<div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">
+Add the current IPI mainnet to Keplr or Leap Wallet.
+</div>
+</div>
+</div>
+
+<p class="subtitle">
+This page adds the custom chain <strong>IPI</strong> (<code>chainId: "ipi-mainnet-2"</code>)
+with the native token <strong>IPI</strong> (<code>nipi</code>, 9 decimals) to your wallet.
+</p>
+
+<div class="button-row">
+<button class="wallet-btn main" id="btn-keplr">➕ Add to Keplr</button>
+<button class="wallet-btn secondary" id="btn-leap">➕ Add to Leap</button>
+<button class="wallet-btn secondary" id="btn-binary">⬇ Get Full Node</button>
+</div>
+
+<div class="hint">
+Use a desktop browser with Keplr / Leap extension, or the in-app browser inside Keplr / Leap on mobile.
+</div>
+
+<div class="mobile-note" id="mobile-note" style="display:none;">
+Mobile detected. If you are not using the in-app browser inside Keplr/Leap, chain suggestion will not work.
+Open this page from the wallet app or use the manual configuration below.
+</div>
+
+<div class="status-box status-muted" id="status"></div>
+
+<details class="manual-config">
+<summary>Manual configuration (for advanced users / mobile wallets)</summary>
+<p>Use this JSON with wallets or tools that accept custom Cosmos chain configuration:</p>
+<pre id="config-json"></pre>
+<button id="btn-copy-config" type="button">Copy JSON to clipboard</button>
+</details>
+</div>
+
+<div class="right-card">
+<div class="right-title">IPI Network Details</div>
+
+<div class="kv-row">
+<span class="key">Chain ID</span><span>ipi-mainnet-2</span>
+</div>
+<div class="kv-row">
+<span class="key">Bech32 Prefix</span><span class="pill">ipi</span>
+</div>
+<div class="kv-row">
+<span class="key">RPC</span>
+<span><a class="link" href="https://ipicoin.eu/rpc" target="_blank" rel="noopener noreferrer">ipicoin.eu/rpc</a></span>
+</div>
+<div class="kv-row">
+<span class="key">REST</span>
+<span><a class="link" href="https://ipicoin.eu/api" target="_blank" rel="noopener noreferrer">ipicoin.eu/api</a></span>
+</div>
+<div class="kv-row">
+<span class="key">Explorer</span>
+<span><a class="link" href="https://explorer.ipicoin.eu/" target="_blank" rel="noopener noreferrer">explorer.ipicoin.eu</a></span>
+</div>
+<div class="kv-row">
+<span class="key">Node Binary</span>
+<span><a class="link" href="https://ipicoin.eu/downloads/ipid-linux-amd64" target="_blank" rel="noopener noreferrer">Get Full Node (Linux AMD64)</a></span>
+</div>
+<div class="kv-row">
+<span class="key">Base Denom</span><span><code>nipi</code></span>
+</div>
+<div class="kv-row">
+<span class="key">Display Denom</span><span>IPI (9 decimals)</span>
+</div>
+
+<div class="footnote">
+Uses standard <code>coinType 118</code> and is compatible with Keplr and Leap wallets that support custom chains.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+<script>
+const CHAIN_CONFIG = {
+chainId: "ipi-mainnet-2",
+chainName: "IPI Mainnet 2",
+rpc: "https://ipicoin.eu/rpc",
+rest: "https://ipicoin.eu/api",
+bip44: { coinType: 118 },
+bech32Config: {
+bech32PrefixAccAddr: "ipi",
+bech32PrefixAccPub: "ipipub",
+bech32PrefixValAddr: "ipivaloper",
+bech32PrefixValPub: "ipivaloperpub",
+bech32PrefixConsAddr: "ipivalcons",
+bech32PrefixConsPub: "ipivalconspub"
+},
+currencies: [
+{ coinDenom: "IPI", coinMinimalDenom: "nipi", coinDecimals: 9 }
+],
+feeCurrencies: [
+{ coinDenom: "IPI", coinMinimalDenom: "nipi", coinDecimals: 9 }
+],
+stakeCurrency: {
+coinDenom: "IPI",
+coinMinimalDenom: "nipi",
+coinDecimals: 9
+},
+features: ["stargate", "cosmwasm"]
+};
+
+const statusEl = document.getElementById("status");
+const mobileNoteEl = document.getElementById("mobile-note");
+const configJsonEl = document.getElementById("config-json");
+const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+
+function setStatus(text, type = "muted") {
+statusEl.textContent = text;
+statusEl.className = "status-box " + (
+type === "ok" ? "status-ok" :
+type === "err" ? "status-err" :
+"status-muted"
+);
+}
+
+function detectEnv() {
+const hasKeplr =
+typeof window.keplr !== "undefined";
+const hasLeap =
+typeof window.leap !== "undefined" ||
+typeof window.leapCosmos !== "undefined" ||
+typeof window.leapWallet !== "undefined";
+
+if (isMobile) {
+mobileNoteEl.style.display = "block";
+
+if (!hasKeplr && !hasLeap) {
+setStatus(
+"Mobile detected. No wallet interface found. Open this page inside the Keplr/Leap in-app browser or use the manual configuration.",
+"err"
+);
+} else {
+setStatus(
+"Mobile wallet environment detected. After tapping Add, confirm the network inside your wallet (Networks / Chains section).",
+"ok"
+);
+}
+} else {
+if (!hasKeplr && !hasLeap) {
+setStatus(
+"Desktop environment detected. Install Keplr or Leap extension, then use the buttons above.",
+"muted"
+);
+} else {
+setStatus(
+"Desktop wallet detected. Click a button above and approve the popup in your wallet.",
+"ok"
+);
+}
+}
+}
+
+async function addToKeplr() {
+const hasKeplr = typeof window.keplr !== "undefined";
+
+if (!hasKeplr) {
+if (isMobile) {
+setStatus(
+"Keplr interface not detected. Open this page in the Keplr in-app browser or use manual configuration.",
+"err"
+);
+} else {
+setStatus(
+"Keplr extension not detected. Install it from keplr.app and refresh this page.",
+"err"
+);
+}
+return;
+}
+
+try {
+setStatus("Sending chain data to Keplr…");
+await window.keplr.experimentalSuggestChain(CHAIN_CONFIG);
+if (isMobile) {
+setStatus(
+"Suggestion sent. In Keplr mobile, open Settings → Chains / Networks → Suggested and approve IPI.",
+"ok"
+);
+} else {
+setStatus("IPI Network suggested to Keplr. Approve the popup.", "ok");
+}
+} catch (err) {
+console.error(err);
+setStatus("Failed to add IPI to Keplr. See console for details.", "err");
+}
+}
+
+async function addToLeap() {
+const leap = window.leap || window.leapCosmos || window.leapWallet;
+const canFallbackKeplr = typeof window.keplr !== "undefined" &&
+typeof window.keplr.experimentalSuggestChain === "function";
+
+if (!leap && !canFallbackKeplr) {
+if (isMobile) {
+setStatus(
+"No Leap-compatible interface detected. Open this page inside Leap's in-app browser or use manual configuration.",
+"err"
+);
+} else {
+setStatus(
+"Leap extension not detected and no Keplr fallback available.",
+"err"
+);
+}
+return;
+}
+
+try {
+setStatus("Sending chain data to wallet…");
+if (leap && typeof leap.experimentalSuggestChain === "function") {
+await leap.experimentalSuggestChain(CHAIN_CONFIG);
+} else {
+await window.keplr.experimentalSuggestChain(CHAIN_CONFIG);
+}
+
+if (isMobile) {
+setStatus(
+"Suggestion sent. In your mobile wallet, check the networks / chains section and approve IPI.",
+"ok"
+);
+} else {
+setStatus(
+"IPI Network suggested to the wallet. Approve the popup.",
+"ok"
+);
+}
+} catch (err) {
+console.error(err);
+setStatus("Failed to add IPI to the wallet. See console for details.", "err");
+}
+}
+
+function initManualConfig() {
+const json = JSON.stringify(CHAIN_CONFIG, null, 2);
+configJsonEl.textContent = json;
+
+const btn = document.getElementById("btn-copy-config");
+btn.addEventListener("click", async () => {
+try {
+await navigator.clipboard.writeText(json);
+setStatus("Configuration JSON copied to clipboard.", "ok");
+} catch (err) {
+console.error(err);
+setStatus("Could not copy configuration to clipboard.", "err");
+}
+});
+}
+
+document.getElementById("btn-keplr").addEventListener("click", addToKeplr);
+document.getElementById("btn-leap").addEventListener("click", addToLeap);
+document.getElementById("btn-binary").addEventListener("click", () => {
+window.open("https://www.ipi.io/downloads/ipid-linux-amd64", "_blank", "noopener,noreferrer");
+});
+
+detectEnv();
+initManualConfig();
+</script>
+
+</body>
+
+<!-- Mirrored from www.ipi.io/wallet.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 22 May 2026 07:13:55 GMT -->
+</html>

@@ -1,0 +1,114 @@
+.diagram {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Roboto, sans-serif;
+  width: 100%;
+  font-size: 0.8em;
+}
+.diagram .row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin: 0;
+  flex-wrap: nowrap;
+}
+.diagram .layer-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-weight: bolder;
+  padding-right: 2em;
+  width: 10em;
+  text-align: right;
+  justify-content: end;
+}
+.diagram .layer-content {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  flex: 1;
+}
+.diagram .br-group {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  flex: 1;
+}
+.diagram .layer:not(:last-child) .layer-content {
+  border-bottom: 2px dotted rgba(255,255,255,0.1);
+}
+.diagram .block {
+  padding: 0.7em 2em;
+  border: 1px solid black;
+  margin: 0.3em 0.5em;
+  border-radius: 5px;
+  font-weight: bold;
+  flex: 1;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  background: rgba(255,255,255,0.1);
+}
+.diagram .group {
+  padding: 0.4em 0.8em;
+  margin: 0.3em 0.5em;
+}
+.diagram .column {
+  display: flex;
+  flex-direction: column;
+}
+.diagram .display-block {
+  display: block !important;
+}
+.diagram .stretch-content {
+  justify-content: stretch;
+}
+.diagram .grow {
+  flex-grow: 1;
+}
+.diagram .flex-1 {
+  flex: 1;
+}
+.diagram .flex-2 {
+  flex: 2;
+}
+.diagram .flex-3 {
+  flex: 3;
+}
+.diagram .flex-4 {
+  flex: 4;
+}
+.diagram .wrap {
+  flex-wrap: wrap;
+}
+
+@media (max-width: 992px) {
+  .diagram .layer {
+    flex-direction: column;
+  }
+  .diagram .layer:not(:last-child) .layer-content {
+    border-bottom: none;
+  }
+  .diagram .layer-title {
+    width: 100%;
+    text-align: center;
+    display: flex;
+  }
+  .diagram .layer-title:before, .diagram .layer-title:after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px dashed rgba(255,255,255, 0.3);
+    margin-left: 2em;
+    margin-right: 2em;
+  }
+}
+
+@media (max-width: 750px) {
+  .diagram .layer-content {
+    flex-wrap: wrap;
+  }
+}
