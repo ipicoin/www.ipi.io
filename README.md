@@ -1,3 +1,8 @@
+# `DISCLAIMER NOTE:` this repo is far from final production ready, yet we want to show that we are transparent with work we do - _wish us luck!_
+
+
+---
+
 # Starlight Starter Kit: Basics
 
 [![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
