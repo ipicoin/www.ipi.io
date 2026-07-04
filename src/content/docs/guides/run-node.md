@@ -35,8 +35,8 @@ ipid version
 ## Inicjalizacja lokalnego devnetu
 
 ```bash
-# 1. Inicjalizacja katalogu węzła
-ipid init moj-node --chain-id ipi-mainnet-2
+# 1. Inicjalizacja katalogu węzła (devnet ma własny chain-id, nie mainnet)
+ipid init moj-node --chain-id ipi-devnet-1
 
 # 2. Utworzenie klucza walidatora (prefiks adresu: ipi)
 ipid keys add validator
@@ -45,7 +45,7 @@ ipid keys add validator
 ipid genesis add-genesis-account validator 100000000000nipi
 
 # 4. Transakcja gentx (stake w nipi)
-ipid genesis gentx validator 1000000000nipi --chain-id ipi-mainnet-2
+ipid genesis gentx validator 1000000000nipi --chain-id ipi-devnet-1
 ipid genesis collect-gentxs
 
 # 5. Start węzła
