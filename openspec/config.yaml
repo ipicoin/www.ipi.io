@@ -1,0 +1,17 @@
+schema: spec-driven
+
+context: |
+  Project: official IPI website and public documentation.
+  Tech stack: Astro 6, Starlight, static HTML/CSS/JavaScript assets.
+  The root route is the public IPI launch landing page; documentation remains on its existing routes.
+  Use the name IPI everywhere. Preserve the official IPI logo and established visual design.
+  Use conventional commits. Do not commit secrets, credentials, private keys, or environment files.
+
+rules:
+  proposal:
+    - Keep proposals focused on one isolated change.
+    - Include explicit non-goals.
+  specs:
+    - Use testable SHALL requirements and concrete scenarios.
+  tasks:
+    - Include build and public-metadata verification tasks.
