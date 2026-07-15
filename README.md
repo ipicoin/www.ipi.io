@@ -1,54 +1,46 @@
-# `DISCLAIMER NOTE:` this repo is far from final production ready, yet we want to show that we are transparent with work we do - _wish us luck!_
+# IPI Website
 
+Official source for the IPI launch landing and public documentation at `www.ipi.io`.
 
----
+> This repository is under active development and is not a final production release.
 
-# Starlight Starter Kit: Basics
+## OpenSpec starts here
 
-[![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
+OpenSpec is initialized in [`openspec/`](openspec/). The first change is:
 
+- [`publish-ipi-launch-landing`](openspec/changes/publish-ipi-launch-landing/) — publishes the verified English IPI launch landing at `/`, including the official logo, California countdown, mobile overflow fix, service navigation, and branded social preview.
+
+Useful commands:
+
+```sh
+openspec list
+openspec status --change publish-ipi-launch-landing
+openspec validate publish-ipi-launch-landing --strict
 ```
-npm create astro@latest -- --template starlight
-```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+OpenSpec 1.6.0 was used with the `spec-driven` schema. Its current installation instructions and workflow are maintained at [OpenSpec](https://github.com/Fission-AI/OpenSpec).
 
-## 🚀 Project Structure
+## Project structure
 
-Inside of your Astro + Starlight project, you'll see the following folders and files:
-
-```
+```text
 .
-├── public/
-├── src/
-│   ├── assets/
-│   ├── content/
-│   │   └── docs/
-│   └── content.config.ts
+├── openspec/                    # Specifications and change artifacts
+├── public/                      # Landing CSS, JavaScript, logo and social assets
+├── src/pages/index.astro        # Public IPI launch landing
+├── src/content/docs/            # Starlight documentation routes
 ├── astro.config.mjs
-├── package.json
-└── tsconfig.json
+└── package.json
 ```
 
-Starlight looks for `.md` or `.mdx` files in the `src/content/docs/` directory. Each file is exposed as a route based on its file name.
+## Development
 
-Images can be added to `src/assets/` and embedded in Markdown with a relative link.
+Prerequisite: Node.js 22.12 or newer.
 
-Static assets, like favicons, can be placed in the `public/` directory.
+```sh
+npm ci
+npm run dev
+npm run build
+npm run preview
+```
 
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Check out [Starlight’s docs](https://starlight.astro.build/), read [the Astro documentation](https://docs.astro.build), or jump into the [Astro Discord server](https://astro.build/chat).
+The Astro production build is written to `dist/`.
