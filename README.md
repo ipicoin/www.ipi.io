@@ -44,3 +44,9 @@ npm run preview
 ```
 
 The Astro production build is written to `dist/`.
+
+## License
+
+Source code and documentation in this repository are licensed under
+[Apache License 2.0](LICENSE). IPI names and marks are governed separately by
+the organization [trademark policy](https://github.com/ipicoin/.github/blob/main/TRADEMARKS.md).
