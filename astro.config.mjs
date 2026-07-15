@@ -7,7 +7,7 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'IPI.IO',
-			social: [{ icon: 'github', label: 'IPI DAO on GitHub', href: 'https://github.com/ipicoin' }],
+			social: [{ icon: 'github', label: 'IPI on GitHub', href: 'https://github.com/ipicoin' }],
 			sidebar: [
 				{
 					label: 'Guides',
