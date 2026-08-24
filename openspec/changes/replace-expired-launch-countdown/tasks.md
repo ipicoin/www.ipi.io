@@ -12,6 +12,6 @@
 
 ## 3. Verification
 
-- [ ] 3.1 Run the Astro production build with Node.js 24.
-- [ ] 3.2 Run the production dependency audit.
-- [ ] 3.3 Validate this OpenSpec change strictly.
+- [x] 3.1 Run the Astro production build with Node.js 24.
+- [x] 3.2 Run the production dependency audit.
+- [x] 3.3 Validate this OpenSpec change strictly.
