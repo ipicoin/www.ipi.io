@@ -1,19 +1,20 @@
 ---
 title: Project status and trust boundaries
-description: A conservative map of what IPI currently publishes and what remains unverified.
+description: An evidence map of what IPI currently publishes and what remains to be integrated.
 ---
 
-IPI does not use public visibility as a substitute for production readiness.
-Each repository must state its own maturity and verification evidence.
+IPI publishes a multi-layer architecture across protocol foundations, explorer,
+wallet models, RPC clients, governance, and independent-infrastructure research.
+Each layer carries its own direct evidence and maturity boundary.
 
 | Area | Current status | Important boundary |
 | --- | --- | --- |
-| Governance and proposals | Active bootstrap process | Independent maintainers and proposal editors are still being established. |
-| Protocol node | Research base | `independency-daemon` is currently an unmodified wasmd tracking fork, not an IPI node release. |
-| Network configuration | Legacy and unverified | Published values are not canonical until bound to a reviewed genesis and reproducible release. |
-| Wallet core and mobile wallet | Pre-alpha | Key handling, recovery, release signing, and transaction UX are not production-audited. |
-| Explorer | Incubating testnet interface | Explorer output depends on configured endpoints and is not independent verification by itself. |
-| Vote, swap, RPC, and NFT interfaces | Inherited prototypes | These examples retain upstream provenance and must not be used with assets of value. |
+| Governance and proposals | Active public bootstrap process | Architecture, security policy, and IPI proposal documents are public; independent maintainership is still being established. |
+| Protocol node | Upstream foundation | `independency-daemon` tracks `wasmd`; current IPI changes are provenance and CI hardening, not consensus/application behavior. |
+| Network configuration | Tested legacy configuration | Published values are not canonical until bound to a reviewed genesis and reproducible release. |
+| Wallet core and mobile wallet | Active development | Eleven wallet model/configuration tests pass; signing, recovery, secure storage, and transaction UX remain incomplete. |
+| Explorer | Active testnet interface | Native Cosmos and EVM query paths are implemented; explorer output still depends on configured endpoints. |
+| Vote, swap, RPC, and NFT interfaces | Integration sandboxes | These examples retain upstream provenance and do not yet contain IPI network binding. |
 
 ## Evidence required for stronger claims
 

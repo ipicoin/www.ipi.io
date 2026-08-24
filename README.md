@@ -2,13 +2,21 @@
 
 Official source for the IPI launch landing and public documentation at `www.ipi.io`.
 
-> This repository is under active development and is not a final production release.
+## What this repository delivers
+
+- the public IPI landing at `/`;
+- direct navigation to the explorer, wallet gateway, and network status;
+- an evidence-aligned overview of the protocol, wallet, product-identity, and
+  checkout architecture;
+- Starlight documentation routes; and
+- versioned brand and social-preview assets.
 
 ## OpenSpec starts here
 
 OpenSpec is initialized in [`openspec/`](openspec/). The first change is:
 
 - [`publish-ipi-launch-landing`](openspec/changes/publish-ipi-launch-landing/) — publishes the verified English IPI launch landing at `/`, including the official logo, California countdown, mobile overflow fix, service navigation, and branded social preview.
+- [`replace-expired-launch-countdown`](openspec/changes/replace-expired-launch-countdown/) — removes the completed launch countdown and aligns capability labels with public engineering evidence.
 
 Useful commands:
 
@@ -44,6 +52,12 @@ npm run preview
 ```
 
 The Astro production build is written to `dist/`.
+
+## Development status
+
+**Active development.** The website presents public services and intended system
+boundaries; it is not evidence by itself that every referenced protocol, wallet,
+hardware, identity, or checkout layer is implemented or production-ready.
 
 ## License
 
